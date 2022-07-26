@@ -17,4 +17,4 @@ workflows:
         - content: |
             #!/usr/bin/env bash
             set -ex
-            go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
+            go test -v 2>&1 ./... | go-junit-report -set-exit-code > ./_tmp/junit.xml
