@@ -1,0 +1,20 @@
+format_version: "11"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+workflows:
+  test:
+    steps:
+    - script@1:
+        title: Install github.com/jstemmer/go-junit-report
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+            go install github.com/jstemmer/go-junit-report/v2@latest
+    - script@1:
+        title: Go test
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+            go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
