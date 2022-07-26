@@ -24,7 +24,7 @@ func Test_random(t *testing.T) {
 	r1 := rand.New(s1)
 	randNum := r1.Intn(100)
 
-	require.Equal(t, true, randNum < 50, "More than 50?")
+	require.Equal(t, true, randNum > 20, "More than 20?")
 }
 
 func Test_long(t *testing.T) {
