@@ -11,3 +11,9 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+            - 'curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.49.2/bitrise-"$(uname -s)"-"$(uname -m)" > /tmp/bitrise'
+            - sudo mv /tmp/bitrise /usr/local/bin/bitrise
+            - chmod +x /usr/local/bin/bitrise
+            - bitrise setup
+            - 'export PATH="$PATH:$HOME/go/bin"'
+            - bitrise run test
