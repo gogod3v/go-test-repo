@@ -11,3 +11,17 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+  - name: 'Block #2'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - 'curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.49.2/bitrise-"$(uname -s)"-"$(uname -m)" > /tmp/bitrise'
+            - sudo mv /tmp/bitrise /usr/local/bin/bitrise
+            - chmod +x /usr/local/bin/bitrise
+  - name: 'Block #3'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - bitrise run test
