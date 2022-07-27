@@ -14,7 +14,7 @@ blocks:
   - name: 'Block #2'
     task:
       jobs:
-        - name: 'Job #1'
+        - name: bitrise cli - install
           commands:
             - 'curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.49.2/bitrise-"$(uname -s)"-"$(uname -m)" > /tmp/bitrise'
             - sudo mv /tmp/bitrise /usr/local/bin/bitrise
@@ -22,6 +22,12 @@ blocks:
   - name: 'Block #3'
     task:
       jobs:
-        - name: 'Job #1'
+        - name: bitrise cli - setup
           commands:
-            - bitrise run test
+            - /usr/local/bin/bitrise setup
+  - name: 'Block #4'
+    task:
+      jobs:
+        - name: bitrise cli - run test
+          commands:
+            - /usr/local/bin/bitrise run test
